@@ -51,7 +51,7 @@ const backButton = document.getElementById('backButton');
 const progressBar = document.getElementById('progressBar');
 const currentTimeDisplay = document.getElementById('currentTime');
 const totalTimeDisplay = document.getElementById('totalTime');
-var volumeControl = document.getElementById('volumeControl');
+const volumeControl = document.getElementById('volumeControl');
 const cover = document.querySelector('.cover');
 
 playPauseButton.forEach(button => {
@@ -62,7 +62,6 @@ volumeControl.addEventListener('input', () => {
     audio.volume = volumeControl.value;
 
     updateSliderColor();
-
     updateThumbGradient();
 });
 
