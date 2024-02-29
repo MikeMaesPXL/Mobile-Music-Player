@@ -24,7 +24,7 @@ const songs = [
         coverSrc: "cover/test1_cover.png"
     },
     {
-        title: "Levitate",
+        title: "Levitating",
         artist: "Dua Lipa",
         audioSrc: "audio/test2_song.mp3",
         coverSrc: "cover/test2_cover.jpg"
@@ -51,7 +51,7 @@ const backButton = document.getElementById('backButton');
 const progressBar = document.getElementById('progressBar');
 const currentTimeDisplay = document.getElementById('currentTime');
 const totalTimeDisplay = document.getElementById('totalTime');
-const volumeControl = document.getElementById('volumeControl');
+var volumeControl = document.getElementById('volumeControl');
 const cover = document.querySelector('.cover');
 
 playPauseButton.forEach(button => {
@@ -60,6 +60,9 @@ playPauseButton.forEach(button => {
 
 volumeControl.addEventListener('input', () => {
     audio.volume = volumeControl.value;
+
+    updateSliderColor();
+
     updateThumbGradient();
 });
 
@@ -182,6 +185,16 @@ function updateThumbGradient() {
     // volumeControl.style.background = thumbColor;
     // const gradientValue = `linear-gradient(to right, yellow ${percent}%, orange ${percent}%, red ${percent}%)`;
     // volumeControl.style.background = gradientValue;
+}
+
+function updateSliderColor() {
+    const percent = (volumeControl.value - volumeControl.min) / (volumeControl.max - volumeControl.min) * 100;
+
+    // Calculate the color stop position for the gradient
+    const colorStop = volumeControl.value / volumeControl.max * 100;
+
+    // Apply the linear gradient with green on the left and gray on the right
+    volumeControl.style.background = `linear-gradient(to right, green 0%, green ${colorStop}%, gray ${colorStop}%, gray 100%)`;
 }
 
 loadSong();

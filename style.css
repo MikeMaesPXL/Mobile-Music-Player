@@ -141,3 +141,23 @@ input[type="range"]::-webkit-slider-thumb {
 .thumb-gradient {
     background: linear-gradient(to right, yellow 0%, orange 50%, red 100%);
 }
+
+.volume {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.volume i {
+    color: white;
+    font-size: 24px;
+    margin-top: 20px;
+}
+
+.volume i:nth-child(1) {
+    margin-right: 20px;
+}
+
+.volume i:nth-child(3) {
+    margin-left: 20px;
+}
