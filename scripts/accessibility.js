@@ -92,11 +92,25 @@ function togglePlayPause() {
 
 function skipForward() {
     currentSongIndex = (currentSongIndex + 1) % songs.length;
+
+    gsap.to(cover, { opacity: 0, duration: 0.5, onComplete: () => {
+        currentSongIndex = (currentSongIndex + 1) % songs.length;
+        loadSong();
+        gsap.to(cover, { opacity: 1, duration: 0.5 });
+    }});
+
     loadSong();
 }
 
 function goBack() {
     currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+
+    gsap.to(cover, { opacity: 0, duration: 0.5, onComplete: () => {
+        currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+        loadSong();
+        gsap.to(cover, { opacity: 1, duration: 0.5 });
+    }});
+
     loadSong();
 }
 
@@ -176,16 +190,6 @@ function updateVolumeControlColor() {
     const volume = volumeControl.value;
     const gradientValue = `linear-gradient(to right, green ${volume * 100}%, #ccc red ${volume * 100}%`;
     volumeControl.style.background = gradientValue;
-}
-
-function updateThumbGradient() {
-    const percent = (volumeControl.value - volumeControl.min) / (volumeControl.max - volumeControl.min) * 100;
-    const hue = percent * 120;
-    // volumeControl.style.setProperty('--thumb-color', `hsl(${hue}, 100%, 50%)`);
-    const thumbColor = `hsl(${hue}, 100%, 50%)`;
-    // volumeControl.style.background = thumbColor;
-    // const gradientValue = `linear-gradient(to right, yellow ${percent}%, orange ${percent}%, red ${percent}%)`;
-    // volumeControl.style.background = gradientValue;
 }
 
 loadSong();

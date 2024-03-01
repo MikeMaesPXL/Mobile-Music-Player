@@ -13,6 +13,10 @@
 
     <!-- Icons fontawesome -->
     <script src="https://kit.fontawesome.com/6c14ee3bf9.js" crossorigin="anonymous"></script>
+
+    <!-- GSAP library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+
 </head>
 <body>
     <div class="container">
@@ -29,7 +33,10 @@
                 <h1 id="songArtist">Song Artist</h1>
             </div>
             <div class="progress">
-                <div id="progressBar"></div>
+                <div id="progressBar">
+                    <div id="progressBall"></div>
+                </div>
+                <div id="progressBarFull"></div>
                 <div class="progressTimes">
                     <span id="currentTime">0:00</span><span id="totalTime">0:00</span>
                 </div>
