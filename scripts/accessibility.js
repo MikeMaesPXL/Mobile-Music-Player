@@ -91,7 +91,7 @@ function togglePlayPause() {
 }
 
 function skipForward() {
-    currentSongIndex = (currentSongIndex + 1) % songs.length;
+    // currentSongIndex = (currentSongIndex + 1) % songs.length;
 
     gsap.to(cover, { opacity: 0, duration: 0.5, onComplete: () => {
         currentSongIndex = (currentSongIndex + 1) % songs.length;
@@ -103,7 +103,7 @@ function skipForward() {
 }
 
 function goBack() {
-    currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+    // currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
 
     gsap.to(cover, { opacity: 0, duration: 0.5, onComplete: () => {
         currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
