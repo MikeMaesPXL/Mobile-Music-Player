@@ -58,18 +58,32 @@ const volumeControl = document.getElementById('volumeControl');
 const cover = document.querySelector('.cover');
 
 const volumeValueDisplay = document.getElementById('volumeValue');
+// this
+const volumeFeedback = document.querySelector('.volume-feedback');
+const overlay = document.getElementById('overlay');
+
+volumeControl.addEventListener('input', () => {
+    //this
+    volumeFeedback.style.display = 'block';
+    volumeFeedback.classList.add('popup');
+    volumeFeedback.style.display = 'block';
+
+    audio.volume = (volumeControl.value / 100) / 5;
+    const volume = volumeControl.value;
+    volumeValueDisplay.textContent = volume;
+
+    //this
+    clearTimeout(volumeFeedback.timerId);
+    volumeFeedback.timerId = setTimeout(() => {
+        overlay.style.display = 'none';
+        volumeFeedback.classList.remove('popup');
+        volumeFeedback.style.display = 'none';
+    }, 1500);
+});
 
 playPauseButton.forEach(button => {
     button.addEventListener('click', togglePlayPause);
 });
-
-volumeControl.addEventListener('input', () => {
-    audio.volume = (volumeControl.value / 100) / 5;
-
-    const volume = volumeControl.value;
-    volumeValueDisplay.textContent = volume;
-});
-
 
 let isPlaying = false;
 
