@@ -85,12 +85,13 @@ playPauseButton.forEach(button => {
     button.addEventListener('click', togglePlayPause);
 });
 
+//this
 function playNextSong() {
     currentSongIndex = (currentSongIndex + 1) % songs.length;
     loadSong();
     audio.play();
 }
-
+//this
 audio.addEventListener('ended', playNextSong);
 
 let isPlaying = false;
