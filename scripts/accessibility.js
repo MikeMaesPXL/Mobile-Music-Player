@@ -58,12 +58,33 @@ const volumeControl = document.getElementById('volumeControl');
 const cover = document.querySelector('.cover');
 
 const volumeValueDisplay = document.getElementById('volumeValue');
-// this
 const volumeFeedback = document.querySelector('.volume-feedback');
 const overlay = document.getElementById('overlay');
+// const volumeIcons = document.querySelectorAll('.volume i');
+
+// volumeIcons.forEach(icon => {
+//     icon.addEventListener('click', toggleMute);
+// });
+
+// let isMuted = false;
+// let previousVolume = 0;
+
+// function toggleMute() {
+//     if (isMuted) {
+//         audio.volume = previousVolume;
+//         volumeControl.value = previousVolume;
+//         volumeValueDisplay.textContent = previousVolume;
+//         isMuted = false;
+//     } else {
+//         previousVolume = volumeControl.value;
+//         audio.volume = 0;
+//         volumeControl.value = 0;
+//         volumeValueDisplay.textContent = 0;
+//         isMuted = true;
+//     }
+// }
 
 volumeControl.addEventListener('input', () => {
-    //this
     volumeFeedback.style.display = 'block';
     volumeFeedback.classList.add('popup');
     volumeFeedback.style.display = 'block';
@@ -72,7 +93,6 @@ volumeControl.addEventListener('input', () => {
     const volume = volumeControl.value;
     volumeValueDisplay.textContent = volume;
 
-    //this
     clearTimeout(volumeFeedback.timerId);
     volumeFeedback.timerId = setTimeout(() => {
         overlay.style.display = 'none';
@@ -85,13 +105,12 @@ playPauseButton.forEach(button => {
     button.addEventListener('click', togglePlayPause);
 });
 
-//this
 function playNextSong() {
     currentSongIndex = (currentSongIndex + 1) % songs.length;
     loadSong();
     audio.play();
 }
-//this
+
 audio.addEventListener('ended', playNextSong);
 
 let isPlaying = false;
