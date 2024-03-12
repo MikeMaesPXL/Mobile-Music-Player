@@ -42,18 +42,14 @@
                 </div>
             </div>
             <div class="controls">
-                <!-- Use skip icon -->
-                <!-- <button id="backButton">Go Back</button> -->
                 <i id="backButton" class="fa-solid fa-backward"></i>
-                <!-- <button id="playPauseButton">Play</button> -->
                 <i id="playPauseButton"></i>
-                <!-- <button id="skipButton">Skip</button> -->
                 <i id="skipButton" class="fa-solid fa-forward"></i>
-                <!-- Use play icon -->
             </div>
+            <div class="volume-feedback">Volume: <span id="volumeValue">30</span></div>
             <div class="volume">
                 <i class="fa fa-volume-down"></i>
-                <input type="range" id="volumeControl" min="0" max="0.075" step="0.001" value="1">
+                <input type="range" id="volumeControl" min="0" max="100" step="5" value="30">
                 <i class="fa fa-volume-up"></i>
             </div>
         </div>

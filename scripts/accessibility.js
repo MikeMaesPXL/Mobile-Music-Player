@@ -45,6 +45,7 @@ const songs = [
 
 let currentSongIndex = 0;
 const audio = new Audio(songs[currentSongIndex].audioSrc);
+audio.volume = 0.3 / 10;
 const playPauseButton = document.querySelectorAll('#playPauseButton');
 const skipButton = document.getElementById('skipButton');
 const backButton = document.getElementById('backButton');
@@ -56,14 +57,19 @@ const totalTimeDisplay = document.getElementById('totalTime');
 const volumeControl = document.getElementById('volumeControl');
 const cover = document.querySelector('.cover');
 
+const volumeValueDisplay = document.getElementById('volumeValue');
+
 playPauseButton.forEach(button => {
     button.addEventListener('click', togglePlayPause);
 });
 
 volumeControl.addEventListener('input', () => {
-    audio.volume = volumeControl.value;
-    updateThumbGradient();
+    audio.volume = (volumeControl.value / 100) / 5;
+
+    const volume = volumeControl.value;
+    volumeValueDisplay.textContent = volume;
 });
+
 
 let isPlaying = false;
 
@@ -177,13 +183,13 @@ function seek(e) {
     audio.currentTime = seekTime;
 }
 
-volumeControl.addEventListener('input', () => {
-    audio.volume = volumeControl.value;
-    updateVolumeControlColor();
-});
+// volumeControl.addEventListener('input', () => {
+//     audio.volume = volumeControl.value;
+//     updateVolumeControlColor();
+// });
 
 function updateVolumeControlColor() {
-    const volume = volumeControl.value;
+    const volume = volumeControl.value / volumeControl.max;
     const gradientValue = `linear-gradient(to right, green ${volume * 100}%, #ccc red ${volume * 100}%`;
     volumeControl.style.background = gradientValue;
 }
